@@ -9,6 +9,7 @@ import java.awt.*;
 public class SearchPanel extends JPanel {
     SearchPanel()
     {
+
         JButton button_user;
         JTextField textField;
         JButton button_search;
