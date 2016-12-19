@@ -89,6 +89,9 @@ public class Listen implements Runnable {
                     case "message":
                         InfoReceive.message(ins[1], ins[2]);
                         break;
+                    case "picture":
+                        InfoReceive.picture(ins[1], ins[2], ins[3], ins[4], ins[5]);
+                        break;
                     default:
                         System.out.println("error: no such instruction");
                 }

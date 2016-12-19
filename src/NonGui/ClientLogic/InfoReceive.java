@@ -2,7 +2,11 @@ package NonGui.ClientLogic;
 
 import NonGui.InfoIO.InfoSend;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Vector;
 
 /**
@@ -19,8 +23,8 @@ public class InfoReceive {
                 InfoSend.login();
         }
         else
-            JOptionPane.showMessageDialog(null, "failed to register, the username you chose has been used " +
-                    "by someone else");
+            JOptionPane.showMessageDialog(null, "failed to register, the username you chose has been" +
+                    "used by someone else");
     }
 
     public static void login(String sessionId, Vector<String> friends, Vector<Boolean> isOnline) {
@@ -41,8 +45,8 @@ public class InfoReceive {
         JOptionPane.showMessageDialog(null, "user doesn't exist, check your friend's username");
     }
     public static void addRequest(String username) {
-        int buttonPressed = JOptionPane.showConfirmDialog(null, username + " wants to be friend with you, " +
-                "do you agree?", "friend request", JOptionPane.OK_CANCEL_OPTION);
+        int buttonPressed = JOptionPane.showConfirmDialog(null, username + " wants to be friend with" +
+                "you, do you agree?", "friend request", JOptionPane.OK_CANCEL_OPTION);
         if (buttonPressed == 0)
             InfoSend.replyRequest(username, true);
         else
@@ -68,5 +72,29 @@ public class InfoReceive {
     }
     public static void message(String username, String message) {
         Main.friendList.addChatRecord(username, message, 1);
+    }
+    public static void picture(String username, String word, String baiduEx, String bingEx,
+                               String youdaoEx) {
+        int buttonPressed = JOptionPane.showConfirmDialog(null, username + " wants to send you a word " +
+                "card, do you agree?", "word card", JOptionPane.OK_CANCEL_OPTION);
+        if (buttonPressed != 0)
+            return;
+        int w = 900;
+        int h = 180;
+        BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+        Graphics graphics = image.getGraphics();
+        graphics.setColor(new Color(43, 52, 69));
+        graphics.fillRect(0, 0, w, h);
+        graphics.setColor(Color.white);
+        graphics.drawString(word, 50, 20);
+        graphics.drawString("baidu:\n" + baiduEx, 50, 60);
+        graphics.drawString("bing:\n" + bingEx, 50, 100);
+        graphics.drawString("youdao:\n" + youdaoEx, 50, 140);
+        try {
+            ImageIO.write(image, "jpg", new File("F:\\test\\out.jpg"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, "word card has been stored in F:\\test\\out.jpg");
     }
 }
