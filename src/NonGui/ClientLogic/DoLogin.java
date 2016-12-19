@@ -17,28 +17,8 @@ public class DoLogin {
             return;
 
         if (State.getIsLogIn())
-        {
             Main.friendList.setVisible(true);
-        }
         else
-        {
-            String[] buttons = new String[] { "LOGIN", "REGISTER" };
-            int buttonPressed = JOptionPane.showOptionDialog(
-                    null, loginPanel, "login", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null,
-                    buttons, buttons[0]);
-            State.userName = loginPanel.username.getText();
-            State.userPassword = loginPanel.password.getText();
-
-            switch (buttonPressed)
-            {
-                case 0:
-                    InfoSend.login();
-                    break;
-                case 1:
-                    InfoSend.register();
-                    break;
-                default:
-            }
-        }
+            loginPanel.setVisible(true);
     }
 }

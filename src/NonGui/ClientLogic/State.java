@@ -24,8 +24,8 @@ public class State {
         baidu, bing, youdao
     }
 
-    public static Boolean isDebug = true;
-    public static final String IP_ADDR = "114.212.130.32";
+    public static Boolean isDebug = false;
+    public static final String IP_ADDR = "114.212.131.82";
     public static final int PORT = 8000;
     public static Socket socket;
     public static DataInputStream input;
@@ -67,13 +67,6 @@ public class State {
             }
         }
     }
-    public static void logout() {
-        isLogIn = false;
-        FriendList f = Main.friendList;
-        for (ChatWindow c : f.chatWindows.values())
-            c.setVisible(false);
-        Main.friendList.setVisible(false);
-    }
 
     public static Boolean isLogIn = false;
     public static Boolean getIsLogIn() {
@@ -83,9 +76,15 @@ public class State {
         }
     }
     public static void setIsLogIn(Boolean i) {
-        synchronized (isLogIn)
-        {
-            isLogIn = i;
+        isLogIn = i;
+        if (isLogIn)
+            Main.mainGui.searchPanel.button_user.setIcon(Main.mainGui.searchPanel.userOn);
+        else {
+            FriendList f = Main.friendList;
+            for (ChatWindow c : f.chatWindows.values())
+                c.setVisible(false);
+            Main.friendList.setVisible(false);
+            Main.mainGui.searchPanel.button_user.setIcon(Main.mainGui.searchPanel.userOff);
         }
     }
     public static String userName = new String();

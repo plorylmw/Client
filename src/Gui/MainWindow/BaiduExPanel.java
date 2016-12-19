@@ -3,6 +3,7 @@ package Gui.MainWindow;
 import NonGui.ClientLogic.State;
 import NonGui.InfoIO.InfoSend;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,7 +15,7 @@ public class BaiduExPanel extends DemoExPanel implements AddIntoExPanel {
     BaiduExPanel(ExplainPanel f)
     {
         super(f);
-        isLove.setText("presented by baidu");
+        isLove.setText("presented by baidu, love it?");
         isLove.addActionListener(new BoxListener());
     }
 
@@ -30,6 +31,11 @@ public class BaiduExPanel extends DemoExPanel implements AddIntoExPanel {
         {
             if (isSetBox)
                 return;
+            if (!State.isLogIn) {
+                JOptionPane.showMessageDialog(null, "please log in first");
+                setCheckBox(false);
+            }
+
             if (isLove.isSelected())
                 InfoSend.love(State.currentWord, 0);
             else

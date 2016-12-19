@@ -38,7 +38,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());//UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -64,9 +64,9 @@ public class Main {
             }
 
             Vector<String> friends = new Vector<>();
-            friends.add("xiaohong");
-            friends.add("xiaoming");
-            friends.add("xiaofang");
+            friends.add("小红");
+            friends.add("小明");
+            friends.add("小芳");
             Vector<Boolean> isOnline = new Vector<>();
             isOnline.add(true);
             isOnline.add(true);
@@ -83,7 +83,8 @@ public class Main {
             exs.add("卧室是是是是分为发");
             exs.add("分为发而我访问");
             DoSearch.showResult(exs, "012", "000");
-
+            State.userName = "windspe";
+            InfoReceive.message("小明", "hello");
         }
     }
 }

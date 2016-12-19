@@ -119,12 +119,16 @@ public class MakePopMenu {
         Vector<String> alternatives = getAltn(input);
         PopMenu p = Main.mainGui.popMenu;
         p.removeAll();
+        p.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+        p.setBackground(new Color(53, 53, 53));
         for (String i : alternatives)
         {
             JMenuItem m = new JMenuItem(i);
             m.addActionListener(p.selectedListener);
             m.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 20));
             m.setForeground(new Color(255, 255, 255));
+            m.setBackground(new Color(53, 53, 53));
+            m.setBorder(BorderFactory.createLineBorder(new Color(53, 53, 53)));
             p.add(m);
         }
 

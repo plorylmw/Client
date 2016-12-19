@@ -18,9 +18,5 @@ public class ExplainPanel extends JPanel {
         baiduPanel = new BaiduExPanel(this);
         bingPanel = new BingExPanel(this);
         youdaoPanel = new YoudaoExPanel(this);
-
-        JTextArea exArea = new JTextArea();
-        exArea.setPreferredSize(new Dimension(300, 300));
-        //add(exArea);
     }
 }

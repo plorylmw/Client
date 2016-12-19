@@ -27,7 +27,7 @@ public class ResultPanel extends JPanel {
         layout.putConstraint(SpringLayout.NORTH, explainPanel, 50, SpringLayout.NORTH, this);
         layout.putConstraint(SpringLayout.WEST, explainPanel, 100, SpringLayout.WEST, this);
 
-        layout.putConstraint(SpringLayout.SOUTH, this, 500, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.SOUTH, this, 700, SpringLayout.NORTH, this);
         layout.putConstraint(SpringLayout.EAST, this, 1000, SpringLayout.WEST, this);
     }
 }

@@ -8,12 +8,13 @@ import java.util.Vector;
 /**
  * Created by Administrator on 12/14/2016.
  */
+
 public class InfoReceive {
     public static void register(Boolean isSuccess) {
         int buttonPressed;
         if (isSuccess) {
-            buttonPressed = JOptionPane.showConfirmDialog(null, "info", "registered successfully, " +
-                            "do you want to log in?", JOptionPane.OK_CANCEL_OPTION);
+            buttonPressed = JOptionPane.showConfirmDialog(null, "registered successfully, " +
+                            "do you want to log in?", "info", JOptionPane.OK_CANCEL_OPTION);
             if (buttonPressed == 0)
                 InfoSend.login();
         }
@@ -29,6 +30,7 @@ public class InfoReceive {
         Main.friendList.clearFriendInfos();
         for (int i = 0; i < friends.size(); i++)
             Main.friendList.addFriend(friends.elementAt(i), isOnline.elementAt(i));
+        Main.friendList.nameLabel.setText(State.userName);
         Main.friendList.refresh();
     }
 

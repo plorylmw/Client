@@ -34,8 +34,8 @@ public class MainGui extends JFrame {
     }
 
     public void showPopMenu(int n) {
-        popMenu.setPopupSize(600, n * 40);
-        popMenu.show(getContentPane(), 140, 90);
+        popMenu.setPopupSize(650, n * 40);
+        popMenu.show(getContentPane(), 110, 80);
     }
 
     public MainGui()
@@ -44,7 +44,7 @@ public class MainGui extends JFrame {
         setPreferredSize(new Dimension(1000, 750));
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("My dictionary");
+        setTitle("我的词典");
         Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
         setIconImage(icon);
         addWindowListener(new CloseListener());

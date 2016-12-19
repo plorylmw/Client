@@ -37,11 +37,15 @@ public class InfoSend {
     public static void logout() {
         String str = "logout&" + Code.encode(State.sessionId);
         send(str);
-        State.logout();
+        State.setIsLogIn(false);
     }
 
     public static void getWord(String word) {
-        String str = "getword&" + Code.encode(State.sessionId) + "&" + Code.encode(word);
+        String str;
+        if (State.isLogIn)
+            str = "getword&" + Code.encode(State.sessionId) + "&" + Code.encode(word);
+        else
+            str = "getwordoffline&" + Code.encode(word);
         send(str);
     }
 
@@ -92,9 +96,19 @@ public class InfoSend {
     }
 
     public static void sendMessage(String username, String message) {
+        if (message.equals(""))
+            return;
         String str = "message&" + Code.encode(State.sessionId) + "&" + Code.encode(username) + "&" +
                 message;
         Main.friendList.addChatRecord(username, message, 0);
+        send(str);
+    }
+
+    public static void sendImage(String username) {
+        if (State.currentWord.equals(""))
+            return;
+        String str = "picture&" + Code.encode(State.sessionId) + "&" + Code.encode(username) + "&" +
+                State.currentWord;
         send(str);
     }
 }
